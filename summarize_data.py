@@ -46,5 +46,3 @@ output_path = os.path.join(output_dir, "iris_pairplot.png")
 plt.savefig(output_path)
 print(f"\nPairplot saved to {output_path}")
 
-# Show plot (optional, remove if running on server without GUI)
-plt.show()
