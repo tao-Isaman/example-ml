@@ -5,6 +5,7 @@ import pandas as pd
 from sklearn.datasets import load_iris
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
 # Load Iris dataset
 iris = load_iris()
@@ -33,7 +34,17 @@ print(df.describe())
 print("\n==== Correlation Matrix ====")
 print(df.corr(numeric_only=True))
 
-# OPTIONAL: Plotting (for visual understanding)
+# Save Pairplot as Image
+output_dir = "output"
+os.makedirs(output_dir, exist_ok=True)
+
 sns.pairplot(df, hue="target_name")
 plt.suptitle("Pairplot of Iris Features by Class", y=1.02)
+
+# Save the plot
+output_path = os.path.join(output_dir, "iris_pairplot.png")
+plt.savefig(output_path)
+print(f"\nPairplot saved to {output_path}")
+
+# Show plot (optional, remove if running on server without GUI)
 plt.show()
